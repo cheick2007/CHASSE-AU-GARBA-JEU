@@ -9,7 +9,7 @@ interface CollectibleProps {
     id: string;
 }
 
-export const Collectible = ({ position, id }: CollectibleProps) => {
+export const Collectible = ({ position }: CollectibleProps) => {
     const meshRef = useRef<THREE.Group>(null);
     const collectGarba = useGameStore(state => state.collectGarba);
     // Use ref for immediate logic lock to prevent multiple triggers per frame
