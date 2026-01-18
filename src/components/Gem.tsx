@@ -1,15 +1,15 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { useGameStore } from '../store/useGameStore';
-import { Text } from '@react-three/drei';
+
 
 interface GemProps {
     id: string;
     position: [number, number, number];
 }
 
-export const Gem = ({ id, position }: GemProps) => {
+export const Gem = ({ position }: GemProps) => {
     const meshRef = useRef<THREE.Group>(null);
     const addGems = useGameStore(state => state.addGems);
     const collectedRef = useRef(false);

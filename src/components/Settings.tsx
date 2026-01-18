@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGameStore } from '../store/useGameStore';
+
 
 export const Settings = ({ onClose }: { onClose: () => void }) => {
     // Ideally this would come from a context or store, but for now we hardcode the display

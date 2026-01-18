@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import * as THREE from 'three';
+import { useMemo } from 'react';
+
 
 interface TreeProps {
     position: [number, number, number];

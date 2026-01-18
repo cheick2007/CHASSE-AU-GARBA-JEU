@@ -1,8 +1,7 @@
-import React from 'react';
 import { useGameStore } from '../store/useGameStore';
 
 export const Shop = ({ onClose }: { onClose: () => void }) => {
-    const { gems, buySkin, buyUpgrade, skins, upgrades } = useGameStore();
+    const { gems, buySkin, buyUpgrade, upgrades } = useGameStore();
 
     return (
         <div className="menu-overlay" style={{ background: 'rgba(0,0,0,0.95)' }}>

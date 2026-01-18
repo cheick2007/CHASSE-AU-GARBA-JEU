@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useGameStore } from '../store/useGameStore';
 import { useShallow } from 'zustand/react/shallow';
 import { Settings } from './Settings';

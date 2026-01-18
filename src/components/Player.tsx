@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useKeyboardControls, PointerLockControls } from '@react-three/drei';
 import * as THREE from 'three';

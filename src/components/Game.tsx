@@ -68,7 +68,7 @@ export const Game = () => {
         return { id: `enemy-lvl${level}-${i}`, pos };
     }), [level, config]);
 
-    const obstacles = useMemo(() => Array.from({ length: config.obstacleCount }).map((_, i) => {
+    const obstacles = useMemo(() => Array.from({ length: config.obstacleCount }).map((_, _i) => {
         const range = config.mapSize / 2;
         return {
             pos: [(Math.random() - 0.5) * range * 2, 0, (Math.random() - 0.5) * range * 2] as [number, number, number],
