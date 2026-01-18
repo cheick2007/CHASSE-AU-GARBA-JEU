@@ -43,6 +43,15 @@ interface StoreState {
   setInvincible: (val: boolean) => void;
   setFirstPerson: (val: boolean) => void;
 
+  // Controls State
+  controls: {
+    moveX: number;
+    moveY: number;
+    isShooting: boolean;
+    isJumping: boolean;
+  };
+  setControls: (controls: Partial<{ moveX: number; moveY: number; isShooting: boolean; isJumping: boolean }>) => void;
+
   // Economy Actions
   addGems: (amount: number) => void;
   buySkin: (type: 'player' | 'weapon', color: string, cost: number) => void;
@@ -65,6 +74,9 @@ export const useGameStore = create<StoreState>((set) => ({
   upgrades: { damage: 1, speed: 1, maxHealth: 100 },
   isInvincible: false,
   isFirstPerson: false,
+
+  controls: { moveX: 0, moveY: 0, isShooting: false, isJumping: false },
+  setControls: (newControls) => set((state) => ({ controls: { ...state.controls, ...newControls } })),
 
   mapObjects: { garbas: [], gems: [], enemies: [] },
   playerPosition: { x: 0, z: 0 },

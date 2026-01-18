@@ -101,10 +101,16 @@ export const Player = ({ obstacles = [] }: PlayerProps) => {
 
         // 1. Movement Logic
         const moveDir = new THREE.Vector3();
+        const { moveX, moveY, isShooting } = useGameStore.getState().controls;
+
         if (forward) moveDir.z -= 1;
         if (backward) moveDir.z += 1;
         if (left) moveDir.x -= 1;
         if (right) moveDir.x += 1;
+
+        // Mobile Joystick Input
+        if (Math.abs(moveY) > 0.1) moveDir.z += moveY;
+        if (Math.abs(moveX) > 0.1) moveDir.x += moveX;
 
         if (moveDir.length() > 0) {
             moveDir.normalize().multiplyScalar(SPEED * delta);
@@ -177,9 +183,11 @@ export const Player = ({ obstacles = [] }: PlayerProps) => {
             state.camera.lookAt(meshRef.current.position);
         }
 
-        // 3. Shooting (Mouse Click)
+        // 3. Shooting (Mouse Click or Mobile Button)
         if (shootCooldown.current > 0) shootCooldown.current -= delta;
-        if (mouseDown && shootCooldown.current <= 0) {
+        // Check local mouse state OR store state
+        const controls = useGameStore.getState().controls;
+        if ((mouseDown || controls.isShooting) && shootCooldown.current <= 0) {
             shoot();
             shootCooldown.current = 0.25;
         }

@@ -4,6 +4,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { Settings } from './Settings';
 import { Shop } from './Shop';
 import { MiniMap } from './MiniMap';
+import { Joystick } from './Joystick';
 
 export const UI = () => {
     const {
@@ -246,7 +247,52 @@ export const UI = () => {
 
             <MiniMap />
 
-            {/* Debug Button Removed */}
+            {/* Mobile Controls Container */}
+            <div className="mobile-controls" style={{
+                position: 'absolute',
+                bottom: '20px',
+                left: '0',
+                width: '100%',
+                height: '150px',
+                pointerEvents: 'none', // Allow clicks to pass through empty space
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '0 40px',
+                boxSizing: 'border-box',
+                zIndex: 90
+            }}>
+                {/* Left: Joystick */}
+                <div style={{ pointerEvents: 'auto', alignSelf: 'flex-end' }}>
+                    <Joystick />
+                </div>
+
+                {/* Right: Action Buttons */}
+                <div style={{
+                    display: 'flex',
+                    gap: '20px',
+                    pointerEvents: 'auto',
+                    alignSelf: 'flex-end',
+                    marginBottom: '20px'
+                }}>
+                    <button
+                        className="btn-mobile-action"
+                        style={{ background: '#ef4444', width: '70px', height: '70px', borderRadius: '50%', border: 'none', fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}
+                        onPointerDown={() => useGameStore.getState().setControls({ isShooting: true })}
+                        onPointerUp={() => useGameStore.getState().setControls({ isShooting: false })}
+                    >
+                        🔫
+                    </button>
+                    <button
+                        className="btn-mobile-action"
+                        style={{ background: '#3b82f6', width: '70px', height: '70px', borderRadius: '50%', border: 'none', fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}
+                        onPointerDown={() => useGameStore.getState().setControls({ isJumping: true })}
+                        onPointerUp={() => useGameStore.getState().setControls({ isJumping: false })}
+                    >
+                        ⬆️
+                    </button>
+                </div>
+            </div>
+
         </div>
     );
 };
