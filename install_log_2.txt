@@ -1,0 +1,8 @@
+npm warn deprecated three-mesh-bvh@0.7.8: Deprecated due to three.js version incompatibility. Please use v0.8.0, instead.
+
+added 73 packages, changed 8 packages, and audited 250 packages in 1m
+
+50 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
