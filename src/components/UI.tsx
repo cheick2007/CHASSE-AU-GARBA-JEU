@@ -113,14 +113,15 @@ export const UI = () => {
             {/* Top Center: Level Display */}
             <div style={{
                 position: 'absolute',
-                top: '20px',
+                top: window.innerWidth < 768 ? '60px' : '20px', // Lower on mobile to clear health bar
                 left: '50%',
                 transform: 'translateX(-50%)',
                 color: 'white',
-                fontSize: '2rem',
+                fontSize: window.innerWidth < 768 ? '1.5rem' : '2rem', // Smaller on mobile
                 fontWeight: 'bold',
                 textShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                zIndex: 10
+                zIndex: 10,
+                whiteSpace: 'nowrap'
             }}>
                 NIVEAU {level}
             </div>
@@ -211,16 +212,12 @@ export const UI = () => {
             </div>
 
             {/* Controls Hint */}
-            <div className="controls-hint">
+            <div className="controls-hint" style={{ display: window.innerWidth < 768 ? 'none' : 'block' }}>
                 <p>ZQSD / Arrows to Move</p>
                 <p>SPACE to Jump | Click to Shoot</p>
             </div>
 
-            {/* Controls Hint */}
-            <div className="controls-hint">
-                <p>ZQSD / Arrows to Move</p>
-                <p>SPACE to Jump | Click to Shoot</p>
-            </div>
+
 
             {/* Crosshair (Center Screen) - Only in FPS Mode */}
             {isFirstPerson && (
@@ -284,11 +281,10 @@ export const UI = () => {
                     </button>
                     <button
                         className="btn-mobile-action"
-                        style={{ background: '#3b82f6', width: '70px', height: '70px', borderRadius: '50%', border: 'none', fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}
-                        onPointerDown={() => useGameStore.getState().setControls({ isJumping: true })}
-                        onPointerUp={() => useGameStore.getState().setControls({ isJumping: false })}
+                        style={{ background: '#10b981', width: '70px', height: '70px', borderRadius: '50%', border: 'none', fontSize: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}
+                        onClick={() => useGameStore.getState().setFirstPerson(!isFirstPerson)}
                     >
-                        ⬆️
+                        👁️
                     </button>
                 </div>
             </div>
