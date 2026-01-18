@@ -101,7 +101,7 @@ export const Player = ({ obstacles = [] }: PlayerProps) => {
 
         // 1. Movement Logic
         const moveDir = new THREE.Vector3();
-        const { moveX, moveY, isShooting } = useGameStore.getState().controls;
+        const { moveX, moveY } = useGameStore.getState().controls;
 
         if (forward) moveDir.z -= 1;
         if (backward) moveDir.z += 1;
